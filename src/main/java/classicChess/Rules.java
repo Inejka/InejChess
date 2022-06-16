@@ -9,16 +9,88 @@ public class Rules {
     public static byte[] generateMovesForTile(Board board, int y, int x) {
         byte[] toReturn = null;
         switch (board.board[y][x]) {
-            case 'p':
-                toReturn = new byte[10];
+            case 'p' -> {
+                toReturn = new byte[9];
                 whitePawnCheck(board, y, x, toReturn);
-                break;
-            case 'P':
-                toReturn = new byte[10];
+            }
+            case 'P' -> {
+                toReturn = new byte[9];
                 blackPawnCheck(board, y, x, toReturn);
-                break;
+            }
+            case 'r' -> {
+                toReturn = new byte[29];
+                whiteRookCheck(board, y, x, toReturn);
+            }
+            case 'R' -> {
+                toReturn = new byte[29];
+                blackRookCheck(board, y, x, toReturn);
+            }
         }
         return toReturn;
+    }
+
+    private static void blackRookCheck(Board board, int y, int x, byte[] toReturn) {
+        byte i = 1, j = 1;
+        while (x - j > -1 && whiteFigureOrEmptyFiledCheck(board, y, x - j)) {
+            toReturn[i] = (byte) y;
+            toReturn[i + 1] = (byte) (x - j);
+            i += 2;
+            j += 1;
+        }
+        j = 1;
+        while (x + j < 8 && whiteFigureOrEmptyFiledCheck(board, y, x + j)) {
+            toReturn[i] = (byte) y;
+            toReturn[i + 1] = (byte) (x + j);
+            i += 2;
+            j += 1;
+        }
+        j = 1;
+        while (y - j > -1 && whiteFigureOrEmptyFiledCheck(board, y - j, x)) {
+            toReturn[i] = (byte) (y - j);
+            toReturn[i + 1] = (byte) x;
+            i += 2;
+            j += 1;
+        }
+        j = 1;
+        while (y + j < 8 && whiteFigureOrEmptyFiledCheck(board, y + j, x)) {
+            toReturn[i] = (byte) (y + j);
+            toReturn[i + 1] = (byte) x;
+            i += 2;
+            j += 1;
+        }
+        toReturn[0] = i;
+    }
+
+    private static void whiteRookCheck(Board board, int y, int x, byte[] toReturn) {
+        byte i = 1, j = 1;
+        while (x - j > -1 && blackFigureOrEmptyFiledCheck(board, y, x - j)) {
+            toReturn[i] = (byte) y;
+            toReturn[i + 1] = (byte) (x - j);
+            i += 2;
+            j += 1;
+        }
+        j = 1;
+        while (x + j < 8 && blackFigureOrEmptyFiledCheck(board, y, x + j)) {
+            toReturn[i] = (byte) y;
+            toReturn[i + 1] = (byte) (x + j);
+            i += 2;
+            j += 1;
+        }
+        j = 1;
+        while (y - j > -1 && blackFigureOrEmptyFiledCheck(board, y - j, x)) {
+            toReturn[i] = (byte) (y - j);
+            toReturn[i + 1] = (byte) x;
+            i += 2;
+            j += 1;
+        }
+        j = 1;
+        while (y + j < 8 && blackFigureOrEmptyFiledCheck(board, y + j, x)) {
+            toReturn[i] = (byte) (y + j);
+            toReturn[i + 1] = (byte) x;
+            i += 2;
+            j += 1;
+        }
+        toReturn[0] = i;
     }
 
     private static void whitePawnCheck(Board board, int y, int x, byte[] toReturn) {
@@ -95,5 +167,13 @@ public class Rules {
         return board.board[y][x] >= 'a' && board.board[y][x] <= 'z';
     }
 
+    private static boolean whiteFigureOrEmptyFiledCheck(Board board, int y, int x) {
+        return board.board[y][x] == '0' || board.board[y][x] == '#' ||
+                (board.board[y][x] >= 'a' && board.board[y][x] <= 'z');
+    }
 
+    private static boolean blackFigureOrEmptyFiledCheck(Board board, int y, int x) {
+        return board.board[y][x] == '0' || board.board[y][x] == '#' ||
+                (board.board[y][x] >= 'A' && board.board[y][x] <= 'Z');
+    }
 }
