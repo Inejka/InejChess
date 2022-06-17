@@ -25,8 +25,122 @@ public class Rules {
                 toReturn = new byte[29];
                 blackRookCheck(board, y, x, toReturn);
             }
+            case 'a' -> {
+                toReturn = new byte[17];
+                whiteKnightCheck(board, y, x, toReturn);
+            }
+            case 'A' -> {
+                toReturn = new byte[17];
+                blackKnightCheck(board, y, x, toReturn);
+            }
         }
         return toReturn;
+    }
+
+    private static void blackKnightCheck(Board board, int y, int x, byte[] toReturn) {
+        byte i = 1;
+        if ((y - 2 > -1) && (x - 1 > -1) &&
+                ((whiteFigureCheck(board, y - 2, x - 1)) || (emptyFieldCheck(board, y - 2, x - 1)))) {
+            toReturn[i] = (byte) (y - 2);
+            toReturn[i + 1] = (byte) (x - 1);
+            i += 2;
+        }
+        if ((y - 2 > -1) && (x + 1 < 8) &&
+                ((whiteFigureCheck(board, y - 2, x + 1)) || (emptyFieldCheck(board, y - 2, x + 1)))) {
+            toReturn[i] = (byte) (y - 2);
+            toReturn[i + 1] = (byte) (x + 1);
+            i += 2;
+        }
+        if ((y + 2 < 8) && (x - 1 > -1) &&
+                ((whiteFigureCheck(board, y + 2, x - 1)) || (emptyFieldCheck(board, y + 2, x - 1)))) {
+            toReturn[i] = (byte) (y + 2);
+            toReturn[i + 1] = (byte) (x - 1);
+            i += 2;
+        }
+        if ((y + 2 < 8) && (x + 1 < 8) &&
+                ((whiteFigureCheck(board, y + 2, x + 1)) || (emptyFieldCheck(board, y + 2, x + 1)))) {
+            toReturn[i] = (byte) (y + 2);
+            toReturn[i + 1] = (byte) (x + 1);
+            i += 2;
+        }
+        if ((y - 1 > -1) && (x - 2 > -1) &&
+                ((whiteFigureCheck(board, y - 1, x - 2)) || (emptyFieldCheck(board, y - 1, x - 2)))) {
+            toReturn[i] = (byte) (y - 1);
+            toReturn[i + 1] = (byte) (x - 2);
+            i += 2;
+        }
+        if ((y - 1 > -1) && (x + 2 < 8) &&
+                ((whiteFigureCheck(board, y - 1, x + 2)) || (emptyFieldCheck(board, y - 1, x + 2)))) {
+            toReturn[i] = (byte) (y - 1);
+            toReturn[i + 1] = (byte) (x + 2);
+            i += 2;
+        }
+        if ((y + 1 < 8) && (x - 2 > -1) &&
+                ((whiteFigureCheck(board, y + 1, x - 2)) || (emptyFieldCheck(board, y + 1, x - 2)))) {
+            toReturn[i] = (byte) (y + 1);
+            toReturn[i + 1] = (byte) (x - 2);
+            i += 2;
+        }
+        if ((y + 1 < 8) && (x + 2 < 8) &&
+                ((whiteFigureCheck(board, y + 1, x + 2)) || (emptyFieldCheck(board, y + 1, x + 2)))) {
+            toReturn[i] = (byte) (y + 1);
+            toReturn[i + 1] = (byte) (x + 2);
+            i += 2;
+        }
+        toReturn[0] = i;
+    }
+
+    private static void whiteKnightCheck(Board board, int y, int x, byte[] toReturn) {
+        byte i = 1;
+        if ((y - 2 > -1) && (x - 1 > -1) &&
+                ((blackFigureCheck(board, y - 2, x - 1)) || (emptyFieldCheck(board, y - 2, x - 1)))) {
+            toReturn[i] = (byte) (y - 2);
+            toReturn[i + 1] = (byte) (x - 1);
+            i += 2;
+        }
+        if ((y - 2 > -1) && (x + 1 < 8) &&
+                ((blackFigureCheck(board, y - 2, x + 1)) || (emptyFieldCheck(board, y - 2, x + 1)))) {
+            toReturn[i] = (byte) (y - 2);
+            toReturn[i + 1] = (byte) (x + 1);
+            i += 2;
+        }
+        if ((y + 2 < 8) && (x - 1 > -1) &&
+                ((blackFigureCheck(board, y + 2, x - 1)) || (emptyFieldCheck(board, y + 2, x - 1)))) {
+            toReturn[i] = (byte) (y + 2);
+            toReturn[i + 1] = (byte) (x - 1);
+            i += 2;
+        }
+        if ((y + 2 < 8) && (x + 1 < 8) &&
+                ((blackFigureCheck(board, y + 2, x + 1)) || (emptyFieldCheck(board, y + 2, x + 1)))) {
+            toReturn[i] = (byte) (y + 2);
+            toReturn[i + 1] = (byte) (x + 1);
+            i += 2;
+        }
+        if ((y - 1 > -1) && (x - 2 > -1) &&
+                ((blackFigureCheck(board, y - 1, x - 2)) || (emptyFieldCheck(board, y - 1, x - 2)))) {
+            toReturn[i] = (byte) (y - 1);
+            toReturn[i + 1] = (byte) (x - 2);
+            i += 2;
+        }
+        if ((y - 1 > -1) && (x + 2 < 8) &&
+                ((blackFigureCheck(board, y - 1, x + 2)) || (emptyFieldCheck(board, y - 1, x + 2)))) {
+            toReturn[i] = (byte) (y - 1);
+            toReturn[i + 1] = (byte) (x + 2);
+            i += 2;
+        }
+        if ((y + 1 < 8) && (x - 2 > -1) &&
+                ((blackFigureCheck(board, y + 1, x - 2)) || (emptyFieldCheck(board, y + 1, x - 2)))) {
+            toReturn[i] = (byte) (y + 1);
+            toReturn[i + 1] = (byte) (x - 2);
+            i += 2;
+        }
+        if ((y + 1 < 8) && (x + 2 < 8) &&
+                ((blackFigureCheck(board, y + 1, x + 2)) || (emptyFieldCheck(board, y + 1, x + 2)))) {
+            toReturn[i] = (byte) (y + 1);
+            toReturn[i + 1] = (byte) (x + 2);
+            i += 2;
+        }
+        toReturn[0] = i;
     }
 
     private static void blackRookCheck(Board board, int y, int x, byte[] toReturn) {
