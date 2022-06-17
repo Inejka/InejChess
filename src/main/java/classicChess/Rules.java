@@ -41,8 +41,122 @@ public class Rules {
                 toReturn = new byte[29];
                 blackBishopCheck(board, y, x, toReturn);
             }
+            case 'q' -> {
+                toReturn = new byte[57];
+                whiteQueenCheck(board, y, x, toReturn);
+            }
+            case 'Q' -> {
+                toReturn = new byte[57];
+                blackQueenCheck(board, y, x, toReturn);
+            }
         }
         return toReturn;
+    }
+
+    private static void blackQueenCheck(Board board, int y, int x, byte[] toReturn) {
+        blackRookCheck(board, y, x, toReturn);
+        byte i = toReturn[0], j = 1;
+        while (y - j > -1 && x - j > -1 && emptyFieldCheck(board, y - j, x - j)) {
+            toReturn[i] = (byte) (y - j);
+            toReturn[i + 1] = (byte) (x - j);
+            i += 2;
+            j += 1;
+        }
+        if (y - j > -1 && x - j > -1 && whiteFigureCheck(board, y - j, x - j)) {
+            toReturn[i] = (byte) (y - j);
+            toReturn[i + 1] = (byte) (x - j);
+            i += 2;
+        }
+        j = 1;
+        while (y - j > -1 && x + j < 8 && emptyFieldCheck(board, y - j, x + j)) {
+            toReturn[i] = (byte) (y - j);
+            toReturn[i + 1] = (byte) (x + j);
+            i += 2;
+            j += 1;
+        }
+        if (y - j > -1 && x + j < 8 && whiteFigureCheck(board, y - j, x + j)) {
+            toReturn[i] = (byte) (y - j);
+            toReturn[i + 1] = (byte) (x + j);
+            i += 2;
+        }
+        j = 1;
+        while (y + j < 8 && x - j > -1 && emptyFieldCheck(board, y + j, x - j)) {
+            toReturn[i] = (byte) (y + j);
+            toReturn[i + 1] = (byte) (x - j);
+            i += 2;
+            j += 1;
+        }
+        if (y + j < 8 && x - j > -1 && whiteFigureCheck(board, y + j, x - j)) {
+            toReturn[i] = (byte) (y + j);
+            toReturn[i + 1] = (byte) (x - j);
+            i += 2;
+        }
+        j = 1;
+        while (y + j < 8 && x + j < 8 && emptyFieldCheck(board, y + j, x + j)) {
+            toReturn[i] = (byte) (y + j);
+            toReturn[i + 1] = (byte) (x + j);
+            i += 2;
+            j += 1;
+        }
+        if (y + j < 8 && x + j < 8 && whiteFigureCheck(board, y + j, x + j)) {
+            toReturn[i] = (byte) (y + j);
+            toReturn[i + 1] = (byte) (x + j);
+            i += 2;
+        }
+        toReturn[0] = i;
+    }
+
+    private static void whiteQueenCheck(Board board, int y, int x, byte[] toReturn) {
+        whiteRookCheck(board, y, x, toReturn);
+        byte i = toReturn[0], j = 1;
+        while (y - j > -1 && x - j > -1 && emptyFieldCheck(board, y - j, x - j)) {
+            toReturn[i] = (byte) (y - j);
+            toReturn[i + 1] = (byte) (x - j);
+            i += 2;
+            j += 1;
+        }
+        if (y - j > -1 && x - j > -1 && blackFigureCheck(board, y - j, x - j)) {
+            toReturn[i] = (byte) (y - j);
+            toReturn[i + 1] = (byte) (x - j);
+            i += 2;
+        }
+        j = 1;
+        while (y - j > -1 && x + j < 8 && emptyFieldCheck(board, y - j, x + j)) {
+            toReturn[i] = (byte) (y - j);
+            toReturn[i + 1] = (byte) (x + j);
+            i += 2;
+            j += 1;
+        }
+        if (y - j > -1 && x + j < 8 && blackFigureCheck(board, y - j, x + j)) {
+            toReturn[i] = (byte) (y - j);
+            toReturn[i + 1] = (byte) (x + j);
+            i += 2;
+        }
+        j = 1;
+        while (y + j < 8 && x - j > -1 && emptyFieldCheck(board, y + j, x - j)) {
+            toReturn[i] = (byte) (y + j);
+            toReturn[i + 1] = (byte) (x - j);
+            i += 2;
+            j += 1;
+        }
+        if (y + j < 8 && x - j > -1 && blackFigureCheck(board, y + j, x - j)) {
+            toReturn[i] = (byte) (y + j);
+            toReturn[i + 1] = (byte) (x - j);
+            i += 2;
+        }
+        j = 1;
+        while (y + j < 8 && x + j < 8 && emptyFieldCheck(board, y + j, x + j)) {
+            toReturn[i] = (byte) (y + j);
+            toReturn[i + 1] = (byte) (x + j);
+            i += 2;
+            j += 1;
+        }
+        if (y + j < 8 && x + j < 8 && blackFigureCheck(board, y + j, x + j)) {
+            toReturn[i] = (byte) (y + j);
+            toReturn[i + 1] = (byte) (x + j);
+            i += 2;
+        }
+        toReturn[0] = i;
     }
 
     private static void blackBishopCheck(Board board, int y, int x, byte[] toReturn) {
