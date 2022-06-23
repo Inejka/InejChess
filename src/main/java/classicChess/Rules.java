@@ -49,8 +49,126 @@ public class Rules {
                 toReturn = new byte[57];
                 blackQueenCheck(board, y, x, toReturn);
             }
+            case 'k' -> {
+                toReturn = new byte[17];
+                whiteKingCheck(board, y, x, toReturn);
+            }
+            case 'K' -> {
+                toReturn = new byte[17];
+                blackKingCheck(board, y, x, toReturn);
+            }
         }
         return toReturn;
+    }
+
+    private static void blackKingCheck(Board board, int y, int x, byte[] toReturn) {
+        byte i = 1;
+        if (y - 1 > -1 && x - 1 > -1 && (emptyFieldCheck(board, y - 1, x - 1) || whiteFigureCheck(board, y - 1, x - 1))) {
+            toReturn[i] = (byte) (y - 1);
+            toReturn[i + 1] = (byte) (x - 1);
+            i += 2;
+        }
+        if (y - 1 > -1 && (emptyFieldCheck(board, y - 1, x) || whiteFigureCheck(board, y - 1, x))) {
+            toReturn[i] = (byte) (y - 1);
+            toReturn[i + 1] = (byte) (x);
+            i += 2;
+        }
+        if (y - 1 > -1 && x + 1 < 8 && (emptyFieldCheck(board, y - 1, x + 1) || whiteFigureCheck(board, y - 1, x + 1))) {
+            toReturn[i] = (byte) (y - 1);
+            toReturn[i + 1] = (byte) (x + 1);
+            i += 2;
+        }
+        if (y + 1 < 8 && x - 1 > -1 && (emptyFieldCheck(board, y + 1, x - 1) || whiteFigureCheck(board, y + 1, x - 1))) {
+            toReturn[i] = (byte) (y + 1);
+            toReturn[i + 1] = (byte) (x - 1);
+            i += 2;
+        }
+        if (y + 1 < 8 && (emptyFieldCheck(board, y + 1, x) || whiteFigureCheck(board, y + 1, x))) {
+            toReturn[i] = (byte) (y + 1);
+            toReturn[i + 1] = (byte) (x);
+            i += 2;
+        }
+        if (y + 1 < 8 && x + 1 < 8 && (emptyFieldCheck(board, y + 1, x + 1) || whiteFigureCheck(board, y + 1, x + 1))) {
+            toReturn[i] = (byte) (y + 1);
+            toReturn[i + 1] = (byte) (x + 1);
+            i += 2;
+        }
+        if (x - 1 > -1 && (emptyFieldCheck(board, y, x - 1) || whiteFigureCheck(board, y, x - 1))) {
+            toReturn[i] = (byte) y;
+            toReturn[i + 1] = (byte) (x - 1);
+            i += 2;
+        }
+        if (x + 1 < 8 && (emptyFieldCheck(board, y, x + 1) || whiteFigureCheck(board, y, x + 1))) {
+            toReturn[i] = (byte) y;
+            toReturn[i + 1] = (byte) (x + 1);
+            i += 2;
+        }
+        if (!board.whiteKingMoved && !board.leftBlackRockMoved && emptyFieldCheck(board, 0, 1) && emptyFieldCheck(board, 0, 2) && emptyFieldCheck(board, 0, 3)) {
+            toReturn[i] = 0;
+            toReturn[i + 1] = 2;
+            i += 2;
+        }
+        if (!board.whiteKingMoved && !board.rightBlackRockMoved && emptyFieldCheck(board, 0, 5) && emptyFieldCheck(board, 0, 6)) {
+            toReturn[i] = 0;
+            toReturn[i + 1] = 6;
+            i += 2;
+        }
+        toReturn[0] = i;
+    }
+
+    private static void whiteKingCheck(Board board, int y, int x, byte[] toReturn) {
+        byte i = 1;
+        if (y - 1 > -1 && x - 1 > -1 && (emptyFieldCheck(board, y - 1, x - 1) || blackFigureCheck(board, y - 1, x - 1))) {
+            toReturn[i] = (byte) (y - 1);
+            toReturn[i + 1] = (byte) (x - 1);
+            i += 2;
+        }
+        if (y - 1 > -1 && (emptyFieldCheck(board, y - 1, x) || blackFigureCheck(board, y - 1, x))) {
+            toReturn[i] = (byte) (y - 1);
+            toReturn[i + 1] = (byte) (x);
+            i += 2;
+        }
+        if (y - 1 > -1 && x + 1 < 8 && (emptyFieldCheck(board, y - 1, x + 1) || blackFigureCheck(board, y - 1, x + 1))) {
+            toReturn[i] = (byte) (y - 1);
+            toReturn[i + 1] = (byte) (x + 1);
+            i += 2;
+        }
+        if (y + 1 < 8 && x - 1 > -1 && (emptyFieldCheck(board, y + 1, x - 1) || blackFigureCheck(board, y + 1, x - 1))) {
+            toReturn[i] = (byte) (y + 1);
+            toReturn[i + 1] = (byte) (x - 1);
+            i += 2;
+        }
+        if (y + 1 < 8 && (emptyFieldCheck(board, y + 1, x) || blackFigureCheck(board, y + 1, x))) {
+            toReturn[i] = (byte) (y + 1);
+            toReturn[i + 1] = (byte) (x);
+            i += 2;
+        }
+        if (y + 1 < 8 && x + 1 < 8 && (emptyFieldCheck(board, y + 1, x + 1) || blackFigureCheck(board, y + 1, x + 1))) {
+            toReturn[i] = (byte) (y + 1);
+            toReturn[i + 1] = (byte) (x + 1);
+            i += 2;
+        }
+        if (x - 1 > -1 && (emptyFieldCheck(board, y, x - 1) || blackFigureCheck(board, y, x - 1))) {
+            toReturn[i] = (byte) y;
+            toReturn[i + 1] = (byte) (x - 1);
+            i += 2;
+        }
+        if (x + 1 < 8 && (emptyFieldCheck(board, y, x + 1) || blackFigureCheck(board, y, x + 1))) {
+            toReturn[i] = (byte) y;
+            toReturn[i + 1] = (byte) (x + 1);
+            i += 2;
+        }
+        if (!board.whiteKingMoved && !board.leftWhiteRockMoved && emptyFieldCheck(board, 7, 1) && emptyFieldCheck(board, 7, 2) && emptyFieldCheck(board, 7, 3)) {
+            toReturn[i] = 7;
+            toReturn[i + 1] = 2;
+            i += 2;
+        }
+        if (!board.whiteKingMoved && !board.rightWhiteRockMoved && emptyFieldCheck(board, 7, 5) && emptyFieldCheck(board, 7, 6)) {
+            toReturn[i] = 7;
+            toReturn[i + 1] = 6;
+            i += 2;
+        }
+        toReturn[0] = i;
     }
 
     private static void blackQueenCheck(Board board, int y, int x, byte[] toReturn) {

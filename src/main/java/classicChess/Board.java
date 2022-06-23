@@ -21,6 +21,8 @@ public class Board {
     public byte[][] board = new byte[8][8];
     public boolean whiteKingMoved = false, blackKingMoved = false;
     public boolean isCurrentTurnWhite = true;
+    public boolean leftBlackRockMoved = false, rightBlackRockMoved = false;
+    public boolean leftWhiteRockMoved = false, rightWhiteRockMoved = false;
     public byte x1, y1, x2, y2;
 
     public Board() {
@@ -65,7 +67,7 @@ public class Board {
     public void display() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++)
-                System.out.print((char)board[i][j]);
+                System.out.print((char) board[i][j]);
             System.out.println();
         }
     }
@@ -74,7 +76,7 @@ public class Board {
         StringBuilder toReturn = new StringBuilder(64);
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++)
-                toReturn.append((char)board[i][j]);
+                toReturn.append((char) board[i][j]);
         return toReturn.toString();
     }
 }
