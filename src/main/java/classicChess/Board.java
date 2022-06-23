@@ -60,8 +60,7 @@ public class Board {
     private void initTiles() {
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++)
-                if ((i + j + 1) % 2 == 0) board[i][j] = '#';
-                else board[i][j] = '0';
+                board[i][j] = (byte) (((i + j + 1) % 2 == 0) ? '#' : '0');
     }
 
     public void display() {
@@ -78,6 +77,72 @@ public class Board {
             for (int j = 0; j < 8; j++)
                 toReturn.append((char) board[i][j]);
         return toReturn.toString();
+    }
+
+    public void makeTurn(int y, int x, int y1, int x1) {
+        switch (y) {
+            case 0 -> {
+                switch (x) {
+                    case 0 -> leftBlackRockMoved = true;
+                    case 4 -> blackKingMoved = true;
+                    case 7 -> rightBlackRockMoved = true;
+                }
+            }
+            case 7 -> {
+                switch (x) {
+                    case 0 -> leftWhiteRockMoved = true;
+                    case 4 -> whiteKingMoved = true;
+                    case 7 -> rightWhiteRockMoved = true;
+                }
+
+            }
+        }
+        switch (board[y][x]) {
+            case 'K' -> {
+                if (Math.abs(x1 - x) == 2) {
+                    if (x1 == 2) {
+                        board[0][3] = 'R';
+                        board[0][0] = '0';
+                    } else {
+                        board[0][5] = 'R';
+                        board[0][7] = '#';
+                    }
+                }
+            }
+            case 'k' -> {
+                if (Math.abs(x1 - x) == 2) {
+                    if (x1 == 2) {
+                        board[7][3] = 'r';
+                        board[7][0] = '0';
+                    } else {
+                        board[7][5] = 'r';
+                        board[7][7] = '#';
+                    }
+                }
+            }
+            case 'P' -> {
+                if (this.board[this.y2][this.x1] == 'p' && this.x1 == this.x2 && this.y2 - this.y1 == -2 && this.y2 == y &&
+                        (this.x2 - x == -1 || this.x2 - x == 1))
+                    board[this.y2][this.x1] = (byte) (((this.y2 + this.x2 + 1) % 2 == 0) ? '#' : '0');
+
+            }
+            case 'p' -> {
+                if (this.board[this.y2][this.x1] == 'P' && this.x1 == this.x2 && this.y2 - this.y1 == 2 && this.y2 == y &&
+                        (this.x2 - x == -1 || this.x2 - x == 1))
+                    board[this.y2][this.x1] = (byte) (((this.y2 + this.x2 + 1) % 2 == 0) ? '#' : '0');
+            }
+        }
+        defaultMove(y, x, y1, x1);
+    }
+
+    private void defaultMove(int y, int x, int y1, int x1) {
+        board[y1][x1] = board[y][x];
+        isCurrentTurnWhite = !isCurrentTurnWhite;
+        board[y][x] = (byte) (((y + x + 1) % 2 == 0) ? '#' : '0');
+        this.x1 = (byte) x;
+        this.y1 = (byte) y;
+        this.x2 = (byte) x1;
+        this.y2 = (byte) y1;
     }
 }
 

@@ -8,6 +8,12 @@ public class Rules {
 
     public static byte[] generateMovesForTile(Board board, int y, int x) {
         byte[] toReturn = null;
+        if ((whiteFigureCheck(board, y, x) && !board.isCurrentTurnWhite)
+                || (blackFigureCheck(board, y, x) && board.isCurrentTurnWhite)) {
+            toReturn = new byte[1];
+            toReturn[0] = 0;
+            return toReturn;
+        }
         switch (board.board[y][x]) {
             case 'p' -> {
                 toReturn = new byte[9];
@@ -103,12 +109,12 @@ public class Rules {
             toReturn[i + 1] = (byte) (x + 1);
             i += 2;
         }
-        if (!board.whiteKingMoved && !board.leftBlackRockMoved && emptyFieldCheck(board, 0, 1) && emptyFieldCheck(board, 0, 2) && emptyFieldCheck(board, 0, 3)) {
+        if (!board.blackKingMoved && !board.leftBlackRockMoved && emptyFieldCheck(board, 0, 1) && emptyFieldCheck(board, 0, 2) && emptyFieldCheck(board, 0, 3)) {
             toReturn[i] = 0;
             toReturn[i + 1] = 2;
             i += 2;
         }
-        if (!board.whiteKingMoved && !board.rightBlackRockMoved && emptyFieldCheck(board, 0, 5) && emptyFieldCheck(board, 0, 6)) {
+        if (!board.blackKingMoved && !board.rightBlackRockMoved && emptyFieldCheck(board, 0, 5) && emptyFieldCheck(board, 0, 6)) {
             toReturn[i] = 0;
             toReturn[i + 1] = 6;
             i += 2;
@@ -519,7 +525,7 @@ public class Rules {
             i += 2;
             j += 1;
         }
-        if (x - j > -1 && whiteFigureCheck(board, y - j, x)) {
+        if (y - j > -1 && whiteFigureCheck(board, y - j, x)) {
             toReturn[i] = (byte) (y - j);
             toReturn[i + 1] = (byte) x;
             i += 2;
@@ -571,7 +577,7 @@ public class Rules {
             i += 2;
             j += 1;
         }
-        if (x - j > -1 && blackFigureCheck(board, y - j, x)) {
+        if (y - j > -1 && blackFigureCheck(board, y - j, x)) {
             toReturn[i] = (byte) (y - j);
             toReturn[i + 1] = (byte) x;
             i += 2;
@@ -597,8 +603,8 @@ public class Rules {
             toReturn[1] = ((byte) (y - 1));
             toReturn[2] = ((byte) x);
             i += 2;
-            if (y == 7 && emptyFieldCheck(board, 5, x)) {
-                toReturn[3] = ((byte) 5);
+            if (y == 6 && emptyFieldCheck(board, 4, x)) {
+                toReturn[3] = ((byte) 4);
                 toReturn[4] = ((byte) x);
                 i += 2;
             }
