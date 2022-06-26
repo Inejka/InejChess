@@ -8,12 +8,12 @@ public class Rules {
 
     public static byte[] generateMovesForTile(Board board, int y, int x) {
         byte[] toReturn = null;
-        if ((whiteFigureCheck(board, y, x) && !board.isCurrentTurnWhite)
+        /*if ((whiteFigureCheck(board, y, x) && !board.isCurrentTurnWhite)
                 || (blackFigureCheck(board, y, x) && board.isCurrentTurnWhite)) {
             toReturn = new byte[1];
             toReturn[0] = 0;
             return toReturn;
-        }
+        }*/
         switch (board.board[y][x]) {
             case 'p' -> {
                 toReturn = new byte[9];
@@ -659,15 +659,15 @@ public class Rules {
         toReturn[0] = i;
     }
 
-    private static boolean blackFigureCheck(Board board, int y, int x) {
+    public static boolean blackFigureCheck(Board board, int y, int x) {
         return board.board[y][x] >= 'A' && board.board[y][x] <= 'Z';
     }
 
-    private static boolean emptyFieldCheck(Board board, int y, int x) {
+    public static boolean emptyFieldCheck(Board board, int y, int x) {
         return board.board[y][x] == '0' || board.board[y][x] == '#';
     }
 
-    private static boolean whiteFigureCheck(Board board, int y, int x) {
+    public static boolean whiteFigureCheck(Board board, int y, int x) {
         return board.board[y][x] >= 'a' && board.board[y][x] <= 'z';
     }
 }

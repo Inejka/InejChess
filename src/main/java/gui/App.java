@@ -1,6 +1,7 @@
 package gui;
 
 import classicChess.Board;
+import classicChess.Game;
 import classicChess.Rules;
 
 import javax.imageio.ImageIO;
@@ -21,16 +22,16 @@ public class App {
 
     Map<Byte, String> dict;
 
-    Board currentGame;
+    Game currentGame;
 
-    public App(Board currentGame) {
+    public App(Game currentGame) {
         this.currentGame = currentGame;
         jFrame = new JFrame("example");
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initDict();
         initButtons();
         redrawAll();
-        jFrame.setSize(480, 510);
+        jFrame.setSize(550, 550);
         jFrame.setLayout(null);
         jFrame.setVisible(true);
     }
@@ -80,8 +81,8 @@ public class App {
             currentPossibleTurns = null;
             currentX = -1;
             currentY = -1;
-        } else if (currentGame.board[y][x] != '0' && currentGame.board[y][x] != '#') {
-            currentPossibleTurns = Rules.generateMovesForTile(currentGame, y, x);
+        } else if (currentGame.getBoard().board[y][x] != '0' && currentGame.getBoard().board[y][x] != '#') {
+            currentPossibleTurns = currentGame.generateMovesForTile(y, x);
             currentY = y;
             currentX = x;
         } else {
@@ -118,8 +119,8 @@ public class App {
             }
             Graphics2D g = combined.createGraphics();
             g.drawImage(tile, 0, 0, null);
-            if (currentGame.board[y][x] != '0' && currentGame.board[y][x] != '#') {
-                BufferedImage toAdd = ImageIO.read(getClass().getClassLoader().getResource(dict.get(currentGame.board[y][x])));
+            if (currentGame.getBoard().board[y][x] != '0' && currentGame.getBoard().board[y][x] != '#') {
+                BufferedImage toAdd = ImageIO.read(getClass().getClassLoader().getResource(dict.get(currentGame.getBoard().board[y][x])));
                 g.drawImage(toAdd, 0, 0, null);
             }
             if (currentX != -1 && checkTurnInTurns(y, x)) {
