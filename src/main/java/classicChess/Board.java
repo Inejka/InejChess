@@ -31,6 +31,22 @@ public class Board {
         initBlackFigures();
     }
 
+    public Board(Board toCopy) {
+        for (int i = 0; i < 8; i++)
+            board[i] = toCopy.board[i].clone();
+        this.blackKingMoved = toCopy.blackKingMoved;
+        this.whiteKingMoved = toCopy.whiteKingMoved;
+        this.isCurrentTurnWhite = toCopy.isCurrentTurnWhite;
+        this.leftBlackRockMoved = toCopy.leftBlackRockMoved;
+        this.rightBlackRockMoved = toCopy.rightBlackRockMoved;
+        this.leftWhiteRockMoved = toCopy.leftWhiteRockMoved;
+        this.rightWhiteRockMoved = toCopy.rightWhiteRockMoved;
+        this.x1 = toCopy.x1;
+        this.x2 = toCopy.x2;
+        this.y1 = toCopy.y1;
+        this.y2 = toCopy.y2;
+    }
+
     private void initBlackFigures() {
         board[0][0] = 'R';
         board[0][7] = 'R';
@@ -78,5 +94,6 @@ public class Board {
                 toReturn.append((char) board[i][j]);
         return toReturn.toString();
     }
+
 }
 

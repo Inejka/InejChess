@@ -14,8 +14,8 @@ import java.util.Map;
 
 public class App {
 
-    private JFrame jFrame;
-    JButtonWithData buttons[][];
+    private final JFrame jFrame;
+    JButtonWithData [][]buttons;
 
     int currentY = -1, currentX = -1;
     byte[] currentPossibleTurns;
@@ -31,7 +31,7 @@ public class App {
         initDict();
         initButtons();
         redrawAll();
-        jFrame.setSize(550, 550);
+        jFrame.setSize(480, 510);
         jFrame.setLayout(null);
         jFrame.setVisible(true);
     }
@@ -72,10 +72,6 @@ public class App {
     }
 
     private void buttonReact(int y, int x) {
-        //for testing purposes
-        //System.out.print(y);
-        //System.out.print(' ');
-        //System.out.println(x);
         if (currentX != -1 && checkTurnInTurns(y, x)) {
             currentGame.makeTurn(currentY, currentX, y, x);
             currentPossibleTurns = null;
@@ -90,15 +86,6 @@ public class App {
             currentY = -1;
             currentPossibleTurns = null;
         }
-        //for testing purposes
-        //if (currentPossibleTurns != null) {
-        //    System.out.println(currentPossibleTurns[0]);
-        //    for (int i = 1; i < currentPossibleTurns[0]; i += 2) {
-        //        System.out.print(currentPossibleTurns[i]);
-        //        System.out.print(' ');
-        //        System.out.println(currentPossibleTurns[i + 1]);
-        //    }
-        //}
         redrawAll();
     }
 

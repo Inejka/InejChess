@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecaf8dda-e7ca-4d94-9dba-1e62bb11ae67" name="Changes" comment="Added CheckMates system" />
+    <list default="true" id="ecaf8dda-e7ca-4d94-9dba-1e62bb11ae67" name="Changes" comment="Added generateAllPossiblePositions &amp;&amp; bug fixes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/classicChess/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classicChess/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/classicChess/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classicChess/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/classicChess/Rules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classicChess/Rules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/App.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656281551439</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added CheckMates system">
+      <created>1656282040646</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1656282040646</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,7 +123,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added CheckMates system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added CheckMates system" />
+    <MESSAGE value="Added generateAllPossiblePositions &amp;&amp; bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added generateAllPossiblePositions &amp;&amp; bug fixes" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/classicChess/Game.java</url>
+          <line>172</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GradleRunConfiguration">
+        <watch expression="board" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
