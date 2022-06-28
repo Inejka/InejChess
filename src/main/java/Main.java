@@ -10,17 +10,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        //new App(new Game());
-        //rec(new Game().generateAllPossiblePositions(),5,0);
-        new Server();
+        new App(new Game());
     }
 
-    public static void rec(List<Game> toIterate, int size, int current) {
-        System.out.println(toIterate.size());
-        if (size <= current) return;
-        List<Game> next = new LinkedList<>();
-        for (Game i : toIterate)
-            next.addAll(i.generateAllPossiblePositions());
-        rec(next, size, current + 1);
-    }
 }

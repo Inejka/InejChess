@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecaf8dda-e7ca-4d94-9dba-1e62bb11ae67" name="Changes" comment="Added generateAllPossiblePositions &amp;&amp; bug fixes">
+    <list default="true" id="ecaf8dda-e7ca-4d94-9dba-1e62bb11ae67" name="Changes" comment="Remade checkmate system">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/classicChess/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classicChess/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/classicChess/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classicChess/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/classicChess/Rules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classicChess/Rules.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,19 +39,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "17",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "vcs.Git"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-18" />
@@ -104,7 +101,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656282040646</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added generateAllPossiblePositions &amp;&amp; bug fixes">
+      <created>1656363073745</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1656363073745</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Remade checkmate system">
+      <created>1656423928009</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1656423928009</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,15 +135,21 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added CheckMates system" />
     <MESSAGE value="Added generateAllPossiblePositions &amp;&amp; bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added generateAllPossiblePositions &amp;&amp; bug fixes" />
+    <MESSAGE value="Remade checkmate system" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remade checkmate system" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/classicChess/Game.java</url>
-          <line>172</line>
+          <line>275</line>
           <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/classicChess/Validations.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

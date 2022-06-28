@@ -109,12 +109,13 @@ public class Rules {
             toReturn[i + 1] = (byte) (x + 1);
             i += 2;
         }
-        if (!board.blackKingMoved && !board.leftBlackRockMoved && emptyFieldCheck(board, 0, 1) && emptyFieldCheck(board, 0, 2) && emptyFieldCheck(board, 0, 3)) {
+        if (!board.blackKingMoved && !board.leftBlackRockMoved && emptyFieldCheck(board, 0, 1) && emptyFieldCheck(board, 0, 2) && emptyFieldCheck(board, 0, 3)
+        && board.board[0][0]=='R') {
             toReturn[i] = 0;
             toReturn[i + 1] = 2;
             i += 2;
         }
-        if (!board.blackKingMoved && !board.rightBlackRockMoved && emptyFieldCheck(board, 0, 5) && emptyFieldCheck(board, 0, 6)) {
+        if (!board.blackKingMoved && !board.rightBlackRockMoved && emptyFieldCheck(board, 0, 5) && emptyFieldCheck(board, 0, 6) &&  board.board[0][7]=='R') {
             toReturn[i] = 0;
             toReturn[i + 1] = 6;
             i += 2;
@@ -164,12 +165,13 @@ public class Rules {
             toReturn[i + 1] = (byte) (x + 1);
             i += 2;
         }
-        if (!board.whiteKingMoved && !board.leftWhiteRockMoved && emptyFieldCheck(board, 7, 1) && emptyFieldCheck(board, 7, 2) && emptyFieldCheck(board, 7, 3)) {
+        if (!board.whiteKingMoved && !board.leftWhiteRockMoved && emptyFieldCheck(board, 7, 1) && emptyFieldCheck(board, 7, 2) && emptyFieldCheck(board, 7, 3)
+        && board.board[7][0]=='r') {
             toReturn[i] = 7;
             toReturn[i + 1] = 2;
             i += 2;
         }
-        if (!board.whiteKingMoved && !board.rightWhiteRockMoved && emptyFieldCheck(board, 7, 5) && emptyFieldCheck(board, 7, 6)) {
+        if (!board.whiteKingMoved && !board.rightWhiteRockMoved && emptyFieldCheck(board, 7, 5) && emptyFieldCheck(board, 7, 6) && board.board[7][7]=='r') {
             toReturn[i] = 7;
             toReturn[i + 1] = 6;
             i += 2;
